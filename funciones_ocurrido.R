@@ -49,6 +49,8 @@ cargar.hoja = function(sheet = 'bd'){
 #
 # Retorno: triàngulo de desarrollo sin acumular (l)
 generar.triangulo = function(input, periodo.revision = "2020 T2"){
+  periodo.revision = "2020 T4"
+  input = datos.ocurrido
   anio.revision = as.numeric(substr(periodo.revision, 1, 4))
   trim.revision = as.numeric(substr(periodo.revision, 7, 7))
   
@@ -67,17 +69,14 @@ generar.triangulo = function(input, periodo.revision = "2020 T2"){
     select(-TrimIniVig) %>%
     as.matrix()
   
+  #acumulamos los valores debajo de la diagonal
   triangle = triangle[1:n.periodos, 1:n.periodos]
+  triangle[is.na(triangle)] = 0
+  for (i in 1:n.periodos) {
+    triangle[i,i] = sum(triangle[i,1:i])
+  }
   
-  lowerT <- triangle
-  lowerT[upper.tri(lowerT)] <- 0
-  diag(lowerT) <- 0
-  diagonal <- colSums(lowerT, na.rm = T)
-  
-  diag(triangle) <- diag(triangle) + diagonal
-  triangle[lower.tri(triangle)] <- 0
-  triangle[is.na(triangle)] <- 0 #matriz triangular superior sin acumular
-  
+
   #pasamos la matriz al lado izquierdo,
   #de acuerdo a la metodología clásica
   n = dim(triangle)[1]
