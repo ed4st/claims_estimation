@@ -49,8 +49,6 @@ cargar.hoja = function(sheet = 'bd'){
 #
 # Retorno: triàngulo de desarrollo sin acumular (l)
 generar.triangulo = function(input, periodo.revision = "2020 T2"){
-  periodo.revision = "2020 T4"
-  input = datos.ocurrido
   anio.revision = as.numeric(substr(periodo.revision, 1, 4))
   trim.revision = as.numeric(substr(periodo.revision, 7, 7))
   
