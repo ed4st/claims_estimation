@@ -48,3 +48,5 @@ Graficamos
     lines(density(escenario.reserva/1e6), # density plot
           lwd = 2, # thickness of line
           col = "#ff3600")
+          
+![bootstrap1](https://github.com/ed4st/claims_estimation/blob/main/bootstrap_2020_T4.png)
