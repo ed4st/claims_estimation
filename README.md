@@ -48,5 +48,19 @@ Graficamos
     lines(density(escenario.reserva/1e6), # density plot
           lwd = 2, # thickness of line
           col = "#ff3600")
-          
+         
 ![bootstrap1](https://github.com/ed4st/claims_estimation/blob/main/bootstrap_2020_T4.png)
+Podemos, también calcular los cuantiles de las reservas paramétricamente, asumiendo distribución normal:
+
+    mu = mean(escenarios.reservas)
+    sig = sd(escenarios.reservas)
+    qnorm(0.75, mean = mu, sd = sig)
+O también, de manera no paramétrica:
+    
+    quantile(escenarios.reservas)
+## Error Estándar de las reservas:
+Basado en el paper de __[Mack 1993](https://www.actuaries.org/LIBRARY/ASTIN/vol23no2/213.pdf)__, se puede estimar el error de las estimaciones de reservas para ver cómo se comportan las predicciones en cada periodo. La función `porcentaje.error` estima el error estándar de las reservas para cada año y la reserva total y lo muestra como porcentaje de la reserva:
+
+    porcentaje.error(L,f)
+
+
