@@ -212,4 +212,4 @@ sqrt(t.mse.mack)
 estimar.reservas(L,factores.NN)$reserva.total
 estimar.reservas(L,factores.mack)$reserva.total
 real
-
+#agregar gráficas
